@@ -1,50 +1,78 @@
-# Welcome to your Expo app 👋
+# NLR Activity Planner
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+NLR App is a mobile application built with React Native and Expo for managing and scheduling aircraft activities within hangars. It provides a clear overview of weekly and daily tasks, including maintenance and relocations, with a focus on resource and personnel allocation.
 
-## Get started
+## Key Features
 
-1. Install dependencies
+-   **Activity Dashboard**: View a summary of important activities for the current week and a detailed breakdown of tasks for any selected day.
+-   **Dynamic Activity Creation**: Add new activities through an intelligent form that adapts its fields based on the activity type (e.g., "Maintenance" vs. "Relocation").
+-   **Resource Management**: Assign employees, aircraft, tail numbers, and other resources to each activity.
+-   **State Management**: Centralized state management for activities, loading states, and errors is handled using React's Context API.
+-   **Mock Backend**: The app uses a mock API to simulate network requests and data persistence, allowing for full functionality without a live backend.
+-   **Component-Based UI**: Built with reusable components, including a custom Multi-Select dropdown for tags and employees.
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+-   **Framework**: React Native with Expo
+-   **Language**: TypeScript
+-   **Navigation**: Expo Router (File-based routing)
+-   **State Management**: React Context API
+-   **UI Components**:
+    -   `react-native-calendars` for the date selection modal.
+    -   `react-native-element-dropdown` for selection inputs.
+-   **Styling**: StyleSheet API
 
-   ```bash
-   npx expo start
-   ```
+## Project Structure
 
-In the output, you'll find options to open the app in a
+The project follows a clean architecture pattern, separating concerns into distinct layers.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+.
+├── app/                  # Screens, navigation, and context
+│   ├── context/          # Global state management (ActivityContext)
+│   ├── _layout.tsx       # Root layout and context provider
+│   ├── index.tsx         # Home screen / Activity Dashboard
+│   └── CreateActivityScreen.tsx # Screen for adding new activities
+├── components/           # Reusable UI components (e.g., MultiSelect)
+├── domain/               # Core business logic and data models
+│   ├── Activity.ts       # The Activity data model
+│   └── ActivityService.ts  # Service layer for activity operations
+├── services/             # API layer for data fetching
+│   └── api/
+│       └── mockActivityApi.ts # Mock API for simulating a backend
+└── utils/                # Utility functions (e.g., date formatting)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Getting Started
 
-## Learn more
+### Prerequisites
 
-To learn more about developing your project with Expo, look at the following resources:
+-   Node.js and npm
+-   Expo Go app on your mobile device or an Android/iOS emulator set up, recommend android studio with Pixel 9.
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Installation & Running the App
 
-## Join the community
+1.  **Clone the repository:**
 
-Join our community of developers creating universal apps.
+    ```bash
+    git clone https://github.com/iwansk1/nlr-app.git
+    cd nlr-app
+    ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Start the development server:**
+
+    ```bash
+    npx expo start
+    ```
+
+4.  **Run the app:**
+    -   Scan the QR code with the Expo Go app on your iOS or Android phone.
+    -   Press `a` to open in an Android emulator.
+    -   Press `i` to open in an iOS simulator.
+    -   Press `w` to open in a web browser.
